@@ -1,13 +1,60 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContexts } from "../../contexts/AuthProviders";
 
 const Login = () => {
+  const [success, setSuccess] = useState('')
+  const [error, setError] = useState('');
+
+  const { loginWithGooglePopup, loginWithGithubPopup, logInUser } =
+    useContext(AuthContexts);
+
   const handleGoogleSignIn = () => {
-    alert("yes i am here");
+    loginWithGooglePopup()
+      .then(result => {
+        setSuccess("loggedIn successfully")
+        setError('')
+      })
+     .catch(error => {
+       setError(error.message);
+       setSuccess('')
+    })
   };
-  const handleGithubSignIn = () => {};
+  // const handleGoogleSignIn =()=>{}
+  const handleGithubSignIn = () => {
+    loginWithGithubPopup()
+      .then((result) => {
+        setSuccess("loggedIn successfully");
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+        setSuccess("");
+      });
+  };
+  const handleLogin = (e) => {
+
+    e.preventDefault();
+
+     const form = e.target;
+     const email = form.email.value;
+     const password = form.password.value;
+
+    logInUser(email, password)
+      .then((result) => {
+        setSuccess("loggedIn successfully");
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.log(error.message);
+        setSuccess("");
+      });
+    form.reset();
+  }
+
   return (
     <div>
       <Container
@@ -15,7 +62,7 @@ const Login = () => {
         style={{ width: "500px ", height: "500px" }}
       >
         <h3 className="pb-2">Please Login</h3>
-        <Form>
+        <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -46,8 +93,8 @@ const Login = () => {
             </div>
           </div>
 
-          <Form.Text className="text-success"></Form.Text>
-          <Form.Text className="text-danger"></Form.Text>
+          <Form.Text className="text-success">{success }</Form.Text>
+          <Form.Text className="text-danger">{error}</Form.Text>
           <br />
           <div className="text-center">
             <Form.Text> Or Sign in using </Form.Text>
