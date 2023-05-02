@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Row } from 'react-bootstrap';
+import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { resolveConfig } from 'vite';
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState(null);
+  const [action, setAction] = useState(true);
 
   const chefsRecipe = useLoaderData();
   const { id, chefbio, picture, numberOfRecipe, experience, likes, chefName } =
     chefsRecipe;
-
+  // const recipe1 = recipes[0];
+  // const recipe2 = recipes[1];
+  // const recipe3 = recipes[2];
 
   useEffect(() => {
-    fetch(`http://localhost:3000/recipes/${id}`)
+    fetch(
+      `https://assignment10-server-arif-mohammad-sagor.vercel.app/recipes/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
-
         setRecipes(data?.recipes);
       });
   }, [])
+
+  const showToaster = (e) => {
+    toast("This is my Favourite Recipe !");
+    setAction(e.target = !action)
+  }
+
+
   // console.log(recipes?.recipes?.map(recipe=>console.log(recipe?.id)));
   return (
     <div>
@@ -57,7 +72,7 @@ const Recipe = () => {
                   backgroundColor: "#DBDFEA",
                   padding: "20px",
                   margin: "20px",
-                  borderRadius:"20px"
+                  borderRadius: "20px",
                 }}
               >
                 <p>
@@ -81,10 +96,45 @@ const Recipe = () => {
                       </small>
                     ))}
                 </p>
-                <Button variant="warning">Favourite</Button>
+                <p className="d-flex">
+                  <p className="fw-bold">Rating: </p>
+
+                  <Rating initialRating={recipe.ratings} readonly />
+                </p>
+
+                <Button
+                  onClick={showToaster}
+                  variant="warning"
+                  disabled={!action}
+                >
+                  Favourite
+                </Button>
+                <ToastContainer />
               </div>
             ))}
         </div>
+        {/* alternative  */}
+        {/* <div>
+          <div>
+
+              <p>
+                  <span className="fw-bold"> RacipeName:</span> {recipes && recipes[1].name}
+                </p>
+
+                <p>
+                  <span className="fw-bold">Method: </span>
+                  <br />
+                  {recipes && recipes[1].method}
+                </p>
+                <p>
+                  <span className="fw-bold"> Ingredients:</span>
+                </p>
+
+          </div>
+          <div></div>
+          <div></div>
+        </div> */}
+        {/* alternative  */}
       </Container>
     </div>
   );

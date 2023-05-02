@@ -7,17 +7,21 @@ import Recipe from "../pages/Recipe";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import ProtectRoute from "./ProtectRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/home",
         element: <Home></Home>,
         loader: () => {
-          return fetch("http://localhost:3000/chefs");
+          return fetch(
+            "https://assignment10-server-arif-mohammad-sagor.vercel.app/chefs"
+          );
         },
       },
       {
@@ -26,13 +30,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/chefs/:id",
-        element:
+        element: (
           <ProtectRoute>
             <Recipe></Recipe>
-          </ProtectRoute>,
+          </ProtectRoute>
+        ),
 
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/chefs/${params.id}`),
+          fetch(
+            `https://assignment10-server-arif-mohammad-sagor.vercel.app/chefs/${params.id}`
+          ),
       },
       {
         path: "/login",

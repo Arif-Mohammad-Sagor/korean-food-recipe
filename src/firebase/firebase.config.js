@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDaR7snNW_44G-oCt-2JfCMXQstMzSDUXs",
-  authDomain: "koritaste-food.firebaseapp.com",
-  projectId: "koritaste-food",
-  storageBucket: "koritaste-food.appspot.com",
-  messagingSenderId: "569358463379",
-  appId: "1:569358463379:web:524a86f2bbe6630258f866",
+  apiKey: VITE_apiKey,
+  authDomain: VITE_authDomain,
+  projectId: VITE_projectId,
+  storageBucket: VITE_storageBucket,
+  messagingSenderId: VITE_messagingSenderId,
+  appId: VITE_appId,
 };
 
 // Initialize Firebase
