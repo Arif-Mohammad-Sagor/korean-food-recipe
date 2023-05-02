@@ -1,12 +1,12 @@
-import React from 'react'
-import { createBrowserRouter } from 'react-router-dom'
-import Main from '../layouts/Main'
-import Home from '../pages/Home'
-import Blog from '../pages/Blog';
-import Recipe from '../pages/Recipe';
-import Login from '../pages/authentication/Login';
-import Register from '../pages/authentication/Register';
-
+import React from "react";
+import { createBrowserRouter } from "react-router-dom";
+import Main from "../layouts/Main";
+import Home from "../pages/Home";
+import Blog from "../pages/Blog";
+import Recipe from "../pages/Recipe";
+import Login from "../pages/authentication/Login";
+import Register from "../pages/authentication/Register";
+import ProtectRoute from "./ProtectRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/chefs/:id",
-        element: <Recipe></Recipe>,
-        loader: (params) =>
+        element:
+          <ProtectRoute>
+            <Recipe></Recipe>
+          </ProtectRoute>,
+
+        loader: ({ params }) =>
           fetch(`http://localhost:3000/chefs/${params.id}`),
       },
       {
@@ -42,4 +46,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router
+export default router;

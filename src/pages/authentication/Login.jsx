@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContexts } from "../../contexts/AuthProviders";
 
@@ -10,6 +10,14 @@ const Login = () => {
 
   const { loginWithGooglePopup, loginWithGithubPopup, logInUser } =
     useContext(AuthContexts);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // const from = location.state?.from?.pathname || "/category/0";
+
+  const from = location.state?.from?.pathname;
+
 
   const handleGoogleSignIn = () => {
     loginWithGooglePopup()
@@ -44,6 +52,7 @@ const Login = () => {
 
     logInUser(email, password)
       .then((result) => {
+         navigate(from, { replace: true });
         setSuccess("loggedIn successfully");
         setError("");
       })
