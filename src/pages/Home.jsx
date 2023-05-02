@@ -13,7 +13,6 @@ import { FaHeart } from 'react-icons/fa';
 const Home = () => {
 
   const chefs = useLoaderData();
-  console.log(chefs);
 
   return (
     <div>
@@ -57,7 +56,7 @@ const Home = () => {
                         Likes: {chef.likes} <FaHeart></FaHeart>
                       </p>
                     </Card.Text>
-                    <Link to="/recipe">
+                    <Link to={`/chefs/${chef.id}`}>
                       <Button className="d-block w-full" variant="primary">
                         View Recipe
                       </Button>

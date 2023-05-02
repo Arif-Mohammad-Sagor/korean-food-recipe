@@ -23,7 +23,7 @@ const Register = () => {
       setError('minimun 6 charecter pass required')
       return;
     }
-    createUser()
+    createUser(email,password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
