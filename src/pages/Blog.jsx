@@ -1,16 +1,14 @@
 import React from 'react'
-// import Pdf from 'react-to-pdf';
+import { Button } from 'react-bootstrap';
+
+import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
 
 const Blog = () => {
 
-  //  <Pdf targetRef={ref} filename="code-example.pdf">
-  //    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-  // </Pdf>;
-
   return (
-    <div className="container" ref={ref}>
+    <div className="container">
       <div>
         <h3>Differences between controlled and uncontrolled components .</h3>
         <p>
@@ -135,6 +133,15 @@ const Blog = () => {
           code more modular, easier to maintain, and can save you time and
           effort in the long run.
         </p>
+      </div>
+      <div className="ms-auto">
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }) => <button onClick={toPdf} className='bg-warning'>Download Summary pdf</button>}
+        </Pdf>
+      </div>
+      <div ref={ref} className=''>
+        <h1>Overall Summary of this blog page</h1>
+        <p>In this blog page we have disscussed some important concept of React js . They are Contralled and Uncontrolled components ,react props related discussion , .Besides we also disscused about Node js and Express js . what is their relation ship and finally why you will create a custom hook . As a react developer you shuld have a very clear concepts about this things . </p>
       </div>
     </div>
   );

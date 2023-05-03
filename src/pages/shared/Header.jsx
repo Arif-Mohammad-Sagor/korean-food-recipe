@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, NavLink, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../contexts/AuthProviders';
 
@@ -13,39 +13,45 @@ const Header = () => {
       .catch(() => { })
 
   }
-  
+
   return (
     <div className="mb-4">
-      <Navbar style={{ backgroundColor: "#070A52" }} expand="lg">
+      <Navbar bg="light" variant="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home" className="text-white">
-            KoriTaste-Foods
-          </Navbar.Brand>
+          <Navbar.Brand href="#home">KoriTaste-Foods</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto d-flex align-items-center">
               <Nav.Link>
                 <Link
                   to="/home"
-                  className={({ isActive }) => (isActive ? "active" : "")}
+                  className="text-decoration-none text-secondary"
                 >
                   Home
                 </Link>
               </Nav.Link>
+
               <Nav.Link>
-                <Link to="/recipes" className="text-white text-decoration-none">
-                  Recipe
+                <Link
+                  to="/blogs"
+                  className="text-decoration-none text-secondary"
+                >
+                  Blog
                 </Link>
               </Nav.Link>
+
               <Nav.Link>
-                <Link to="/blogs" className="text-white text-decoration-none">
-                  Blog
+                <Link
+                  to="/recipes"
+                  className="text-decoration-none text-secondary"
+                >
+                  Recipes
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 {user ? (
                   <>
-                    <Link className="text-white text-decoration-none">
+                    <Link className="text-decoration-none">
                       <span title={user.displayName}>
                         {" "}
                         <img
@@ -59,7 +65,7 @@ const Header = () => {
                       </span>
                     </Link>
                     <Link to="/login">
-                      <Button onClick={handleLogout} variant="outline-light">
+                      <Button onClick={handleLogout} variant="outline-dark">
                         Logout
                       </Button>
                     </Link>
@@ -67,11 +73,8 @@ const Header = () => {
                 ) : (
                   <>
                     <Nav.Link>
-                      <Link
-                        to="/login"
-                        className="text-white text-decoration-none"
-                      >
-                        <Button variant="outline-light">Login</Button>
+                      <Link to="/login" className=" text-decoration-none">
+                        <Button variant="outline-dark">Login</Button>
                       </Link>
                     </Nav.Link>
                   </>
