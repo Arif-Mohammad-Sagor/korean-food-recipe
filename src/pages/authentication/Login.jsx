@@ -24,6 +24,7 @@ const Login = () => {
       .then(result => {
         setSuccess("loggedIn successfully")
         setError('')
+        console.log(result.user)
       })
      .catch(error => {
        setError(error.message);

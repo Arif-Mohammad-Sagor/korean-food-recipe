@@ -1,8 +1,14 @@
 import React from 'react'
+// import Pdf from 'react-to-pdf';
+
+const ref = React.createRef();
 
 const Blog = () => {
+   <Pdf targetRef={ref} filename="code-example.pdf">
+     {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+   </Pdf>;
   return (
-    <div className="container">
+    <div className="container" ref={ref}>
       <div>
         <h3>Differences between controlled and uncontrolled components .</h3>
         <p>
@@ -114,7 +120,7 @@ const Blog = () => {
         </ul>
       </div>
       <div>
-        <h3>What is a custom hook and why will you  create a custom hook ? </h3>
+        <h3>What is a custom hook and why will you create a custom hook ? </h3>
         <br />
         <p>
           Sure! A custom hook is just a reusable piece of code that you can use

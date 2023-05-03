@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
-import './Header.css'
 import { Link } from 'react-router-dom';
-import {FaUserCircle } from "react-icons/fa";
 import { AuthContexts } from '../../contexts/AuthProviders';
 
 const Header = () => {
@@ -14,7 +12,7 @@ const Header = () => {
   }
   return (
     <div className="mb-4">
-      <Navbar className="navbar" expand="lg">
+      <Navbar style={{ backgroundColor: "#070A52" }} expand="lg">
         <Container>
           <Navbar.Brand href="#home" className="text-white">
             KoriTaste-Foods
@@ -42,21 +40,32 @@ const Header = () => {
                 {user ? (
                   <>
                     <Link className="text-white text-decoration-none">
-                      <FaUserCircle></FaUserCircle>
+                      <span title={user.displayName}>
+                        {" "}
+                        <img
+                          src={user.photoURL}
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            borderRadius: "50%",
+                          }}
+                        />
+                      </span>
                     </Link>
-                    <Link>
-                      <Button onClick={handleLogout} variant="outline-light">Logout</Button>
+                    <Link to="/login">
+                      <Button onClick={handleLogout} variant="outline-light">
+                        Logout
+                      </Button>
                     </Link>
                   </>
                 ) : (
                   <>
-                    {" "}
                     <Nav.Link>
                       <Link
                         to="/login"
                         className="text-white text-decoration-none"
                       >
-                        <Button variant="outline-light">Login</Button>
+                       Login
                       </Link>
                     </Nav.Link>
                   </>
