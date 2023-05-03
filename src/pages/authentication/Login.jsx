@@ -22,6 +22,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     loginWithGooglePopup()
       .then(result => {
+         navigate(from, { replace: true });
         setSuccess("loggedIn successfully")
         setError('')
         console.log(result.user)
@@ -35,6 +36,7 @@ const Login = () => {
   const handleGithubSignIn = () => {
     loginWithGithubPopup()
       .then((result) => {
+         navigate(from, { replace: true });
         setSuccess("loggedIn successfully");
         setError("");
       })

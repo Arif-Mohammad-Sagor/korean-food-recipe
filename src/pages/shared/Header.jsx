@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../contexts/AuthProviders';
+import './Header.css';
 
 const Header = () => {
   const { user,logOut } = useContext(AuthContexts);
@@ -19,9 +20,12 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto ">
+            <Nav className="ms-auto d-flex align-items-center">
               <Nav.Link>
-                <Link to="/home" className="text-white text-decoration-none">
+                <Link
+                  to="/home"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
                   Home
                 </Link>
               </Nav.Link>
@@ -35,7 +39,6 @@ const Header = () => {
                   Blog
                 </Link>
               </Nav.Link>
-
               <Nav.Link>
                 {user ? (
                   <>
@@ -65,7 +68,7 @@ const Header = () => {
                         to="/login"
                         className="text-white text-decoration-none"
                       >
-                       Login
+                        <Button variant="outline-light">Login</Button>
                       </Link>
                     </Nav.Link>
                   </>
