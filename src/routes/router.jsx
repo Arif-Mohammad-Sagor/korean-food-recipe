@@ -7,7 +7,7 @@ import Recipe from "../pages/Recipe";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import ProtectRoute from "./ProtectRoute";
-import ErrorPage from "../pages/ErrorPage";
+import ErrorPage from "../pages/Error/ErrorPage";
 import HotRecipes from "../pages/shared/HotRecipes/HotRecipes";
 
 const router = createBrowserRouter([

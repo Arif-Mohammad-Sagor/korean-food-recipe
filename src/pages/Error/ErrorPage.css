@@ -1,0 +1,22 @@
+.errorContainer{
+    width:600px;
+    height: 500px;
+    margin:0 auto;
+   background-color: rgba(237, 213, 217, 0.241);
+}
+.errorContentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+.errorImg{
+    width:370px;
+
+}
+@media screen and (max-width:400px) {
+    .errorContentContainer{
+        flex-direction: column;
+    }
+
+}

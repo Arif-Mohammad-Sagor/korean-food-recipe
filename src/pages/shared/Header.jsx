@@ -2,15 +2,18 @@ import React, { useContext } from 'react'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../contexts/AuthProviders';
-import './Header.css';
 
 const Header = () => {
-  const { user,logOut } = useContext(AuthContexts);
+
+  const { user, logOut } = useContext(AuthContexts);
+
   const handleLogout = () => {
     logOut()
       .then(() => { })
-       .catch(()=>{})
+      .catch(() => { })
+
   }
+  
   return (
     <div className="mb-4">
       <Navbar style={{ backgroundColor: "#070A52" }} expand="lg">
