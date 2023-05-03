@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import LazyLoad from "react-lazy-load";
 
 import banner3 from "../assets/banner-3.jpg";
 import beef from '../assets/beef.jpg';
@@ -46,7 +47,10 @@ const Home = () => {
             {chefs.map((chef) => (
               <div key={chef.id} className=" col-lg-4">
                 <Card>
-                  <Card.Img variant="top" src={chef.picture} />
+                  <LazyLoad>
+                    <Card.Img variant="top" src={chef.picture} />
+                  </LazyLoad>
+
                   <Card.Body>
                     <Card.Title>{chef.chefName}</Card.Title>
                     <Card.Text>

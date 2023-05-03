@@ -4,7 +4,7 @@ import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { resolveConfig } from 'vite';
+
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState(null);
