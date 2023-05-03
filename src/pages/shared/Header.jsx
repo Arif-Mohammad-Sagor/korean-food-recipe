@@ -30,12 +30,12 @@ const Header = () => {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/recipe" className="text-white text-decoration-none">
+                <Link to="/recipes" className="text-white text-decoration-none">
                   Recipe
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/blog" className="text-white text-decoration-none">
+                <Link to="/blogs" className="text-white text-decoration-none">
                   Blog
                 </Link>
               </Nav.Link>

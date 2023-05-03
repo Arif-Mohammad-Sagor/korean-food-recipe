@@ -8,6 +8,7 @@ import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import ProtectRoute from "./ProtectRoute";
 import ErrorPage from "../pages/ErrorPage";
+import HotRecipes from "../pages/shared/HotRecipes/HotRecipes";
 
 const router = createBrowserRouter([
   {
@@ -25,21 +26,25 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/blog",
-        element: <Blog></Blog>,
-      },
-      {
         path: "/chefs/:id",
         element: (
           <ProtectRoute>
             <Recipe></Recipe>
           </ProtectRoute>
         ),
-
         loader: ({ params }) =>
           fetch(
             `https://assignment10-server-arif-mohammad-sagor.vercel.app/chefs/${params.id}`
           ),
+      },
+
+      {
+        path: "/recipes",
+        element: <HotRecipes></HotRecipes>,
+      },
+      {
+        path: "/blogs",
+        element: <Blog></Blog>,
       },
       {
         path: "/login",

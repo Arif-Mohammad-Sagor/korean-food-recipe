@@ -4,9 +4,11 @@ import React from 'react'
 const ref = React.createRef();
 
 const Blog = () => {
-   <Pdf targetRef={ref} filename="code-example.pdf">
-     {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-   </Pdf>;
+
+  //  <Pdf targetRef={ref} filename="code-example.pdf">
+  //    {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+  // </Pdf>;
+
   return (
     <div className="container" ref={ref}>
       <div>

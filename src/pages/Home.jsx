@@ -10,6 +10,7 @@ import dessert from '../assets/dessert.jpg';
 
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
+import HotRecipes from './shared/HotRecipes/HotRecipes';
 
 const Home = () => {
 
@@ -71,7 +72,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div>
+        <div className='mb-5'>
           <h1 className="text-center  my-5">Recipe Category </h1>
           <div className="row">
             <div className="col-lg-3">
@@ -122,6 +123,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <HotRecipes></HotRecipes>
       </Container>
     </div>
   );

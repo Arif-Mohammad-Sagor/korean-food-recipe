@@ -3,7 +3,7 @@ import "./Footer.css";
 import { FaFacebook, FaGoogle, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="footer ">
       <h3 className="text-center pt-4 pb-1"> Pure Korean Foods</h3>
       <div className="footerNavContainer">
         <ul className="footerNav">
