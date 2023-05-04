@@ -27,7 +27,7 @@ const Recipe = () => {
 
    const showToaster = (i) => {
      toast("This is my Favourite Recipe !");
-     setAction([...action,i]);
+     setAction([...action, i]);
   };
 
 
@@ -72,6 +72,7 @@ const Recipe = () => {
                   padding: "20px",
                   margin: "20px",
                   borderRadius: "20px",
+                  position:"relative"
                 }}
               >
                 <p>
@@ -102,7 +103,7 @@ const Recipe = () => {
                 </p>
 
                 <Button
-                  className='mt-auto'
+                  className=''
                   onClick={() => { showToaster(i)}}
                   variant="warning"
                   disabled={action.includes(i)? true:false}

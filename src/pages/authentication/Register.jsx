@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContexts } from "../../contexts/AuthProviders";
 
 import {  updateProfile } from "firebase/auth";
@@ -11,7 +11,7 @@ const Register = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-
+  const navigate = useNavigate();
   const { createUser } = useContext(AuthContexts);
 
   const handleRegister = (e) => {
@@ -28,19 +28,19 @@ const Register = () => {
     }
     createUser(email, password)
       .then((result) => {
-        const loggedUser = result;
-        console.log(loggedUser);
- updateProfile(loggedUser,{
-          displayName: name,
-          photoURL: photoUrl,
-        })
-          .then(() => {
-            console.log("profile updated");
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
-
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+ updateProfile(loggedUser, {
+   displayName: name,
+   photoURL: photoUrl,
+ })
+   .then(() => {
+     console.log("profile updated");
+   })
+   .catch((error) => {
+     console.log(error.message);
+   });
+        navigate('/login');
         setSuccess("successfully created");
         setError("");
 
