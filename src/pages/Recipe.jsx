@@ -8,14 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState(null);
-  const [action, setAction] = useState(true);
+  const [action, setAction] = useState([]);
 
   const chefsRecipe = useLoaderData();
   const { id, chefbio, picture, numberOfRecipe, experience, likes, chefName } =
     chefsRecipe;
-  // const recipe1 = recipes[0];
-  // const recipe2 = recipes[1];
-  // const recipe3 = recipes[2];
+
 
   useEffect(() => {
     fetch(
@@ -27,10 +25,14 @@ const Recipe = () => {
       });
   }, [])
 
-  const showToaster = (e) => {
-    toast("This is my Favourite Recipe !");
-    setAction(e.target = !action)
-  }
+   const showToaster = (i) => {
+     toast("This is my Favourite Recipe !");
+     setAction([...action,i]);
+  };
+
+
+
+
 
 
   // console.log(recipes?.recipes?.map(recipe=>console.log(recipe?.id)));
@@ -64,8 +66,9 @@ const Recipe = () => {
         <h3 className="text-left my-5">My Recipes have a look !!</h3>
         <div className="row" style={{ margin: "mx-auto" }}>
           {recipes &&
-            recipes.map((recipe) => (
+            recipes.map((recipe,i) => (
               <div
+
                 key={recipe.id}
                 className="col-md-12 col-lg-3 "
                 style={{
@@ -103,9 +106,11 @@ const Recipe = () => {
                 </p>
 
                 <Button
-                  onClick={showToaster}
+                  className='mt-auto'
+                  onClick={() => { showToaster(i)}}
                   variant="warning"
-                  disabled={!action}
+                  disabled={action.includes(i)? true:false}
+
                 >
                   Favourite
                 </Button>

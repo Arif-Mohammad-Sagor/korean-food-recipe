@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -18,6 +19,7 @@ const provider = new GoogleAuthProvider();
 const providerGithub = new GithubAuthProvider();
 
 const AuthProviders = ({ children }) => {
+  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +44,9 @@ const AuthProviders = ({ children }) => {
   const logOut = () => {
    return signOut(auth);
   }
-
+  const updateUserProfile = (currentUser) => {
+    return updateProfile(currentUser);
+}
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (createUser) => {
       setUser(createUser);
@@ -60,6 +64,7 @@ const AuthProviders = ({ children }) => {
     user,
     logOut,
     loading,
+    updateUserProfile
 
   };
 

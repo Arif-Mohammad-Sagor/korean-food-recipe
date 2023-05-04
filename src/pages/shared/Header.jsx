@@ -1,7 +1,11 @@
 import React, { useContext } from 'react'
-import { Button, Container, Nav, NavLink, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar, NavbarBrand } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../contexts/AuthProviders';
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import { NavLink } from 'react-router-dom';
+import './Header.css'
 
 const Header = () => {
 
@@ -13,7 +17,7 @@ const Header = () => {
       .catch(() => { })
 
   }
-
+console.log(user)
   return (
     <div className="mb-4">
       <Navbar bg="light" variant="light" expand="lg">
@@ -22,47 +26,48 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto d-flex align-items-center">
-              <Nav.Link>
-                <Link
-                  to="/home"
-                  className="text-decoration-none text-secondary"
-                >
-                  Home
-                </Link>
-              </Nav.Link>
+              <NavLink
+                to="/"
+                style={{ textDecoration: "none", color: "gray" }}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
 
-              <Nav.Link>
-                <Link
-                  to="/blogs"
-                  className="text-decoration-none text-secondary"
-                >
-                  Blog
-                </Link>
-              </Nav.Link>
+              <NavLink
+                to="/blogs"
+                style={{ textDecoration: "none", color: "gray" ,marginRight:"10px",marginLeft:"10px" }}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Blogs
+              </NavLink>
+              <NavLink
+                to="/recipes"
+                style={{ textDecoration: "none", color: "gray" }}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Recipes
+              </NavLink>
 
-              <Nav.Link>
-                <Link
-                  to="/recipes"
-                  className="text-decoration-none text-secondary"
-                >
-                  Recipes
-                </Link>
-              </Nav.Link>
               <Nav.Link>
                 {user ? (
                   <>
-                    <Link className="text-decoration-none">
-                      <span title={user.displayName}>
-                        {" "}
-                        <img
-                          src={user.photoURL}
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            borderRadius: "50%",
-                          }}
-                        />
-                      </span>
+                    <Link className="text-decoration-none text">
+                      <img
+                        id="app-title"
+                        src={user.photoURL}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                          border: "1px solid black",
+                        }}
+                      />
+                      <ReactTooltip
+                        anchorId="app-title"
+                        place="bottom"
+                        content={user.displayName}
+                      />
                     </Link>
                     <Link to="/login">
                       <Button onClick={handleLogout} variant="outline-dark">
