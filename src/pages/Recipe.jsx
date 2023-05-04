@@ -31,10 +31,6 @@ const Recipe = () => {
   };
 
 
-
-
-
-
   // console.log(recipes?.recipes?.map(recipe=>console.log(recipe?.id)));
   return (
     <div>
@@ -118,28 +114,6 @@ const Recipe = () => {
               </div>
             ))}
         </div>
-        {/* alternative  */}
-        {/* <div>
-          <div>
-
-              <p>
-                  <span className="fw-bold"> RacipeName:</span> {recipes && recipes[1].name}
-                </p>
-
-                <p>
-                  <span className="fw-bold">Method: </span>
-                  <br />
-                  {recipes && recipes[1].method}
-                </p>
-                <p>
-                  <span className="fw-bold"> Ingredients:</span>
-                </p>
-
-          </div>
-          <div></div>
-          <div></div>
-        </div> */}
-        {/* alternative  */}
       </Container>
     </div>
   );

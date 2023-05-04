@@ -5,7 +5,7 @@ import { AuthContexts } from '../../contexts/AuthProviders';
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { NavLink } from 'react-router-dom';
-import './Header.css'
+
 
 const Header = () => {
 
@@ -29,7 +29,7 @@ console.log(user)
               <NavLink
                 to="/"
                 style={{ textDecoration: "none", color: "gray" }}
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "text-danger" : "")}
               >
                 Home
               </NavLink>
@@ -37,14 +37,14 @@ console.log(user)
               <NavLink
                 to="/blogs"
                 style={{ textDecoration: "none", color: "gray" ,marginRight:"10px",marginLeft:"10px" }}
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "text-danger" : "")}
               >
                 Blogs
               </NavLink>
               <NavLink
                 to="/recipes"
                 style={{ textDecoration: "none", color: "gray" }}
-                className={({ isActive }) => (isActive ? "active" : "")}
+                className={({ isActive }) => (isActive ? "text-danger" : "")}
               >
                 Recipes
               </NavLink>
@@ -57,8 +57,8 @@ console.log(user)
                         id="app-title"
                         src={user.photoURL}
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          width: "40px",
+                          height: "40px",
                           borderRadius: "50%",
                           border: "1px solid black",
                         }}
