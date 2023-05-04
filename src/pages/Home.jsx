@@ -1,19 +1,18 @@
-import React from 'react'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import React from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import LazyLoad from "react-lazy-load";
 
 import banner3 from "../assets/banner-3.jpg";
-import beef from '../assets/beef.jpg';
-import chicken from '../assets/chicken.jpg';
-import veg from '../assets/veg.jpg';
-import dessert from '../assets/dessert.jpg';
+import beef from "../assets/beef.jpg";
+import chicken from "../assets/chicken.jpg";
+import veg from "../assets/veg.jpg";
+import dessert from "../assets/dessert.jpg";
 
-import { Link, useLoaderData } from 'react-router-dom';
-import { FaHeart } from 'react-icons/fa';
-import HotRecipes from './shared/HotRecipes/HotRecipes';
+import { Link, useLoaderData } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import HotRecipes from "./shared/HotRecipes/HotRecipes";
 
 const Home = () => {
-
   const chefs = useLoaderData();
 
   return (
@@ -72,7 +71,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className='mb-5'>
+        <div className="mb-5 text-center">
           <h1 className="text-center  my-5">Recipe Category </h1>
           <div className="row">
             <div className="col-lg-3">
@@ -127,6 +126,6 @@ const Home = () => {
       </Container>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
